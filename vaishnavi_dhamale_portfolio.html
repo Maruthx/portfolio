@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vaishnavi Dhamale — Graphic Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0d0d0d;
+    --white: #f5f2ec;
+    --accent: #c9a96e;
+    --accent2: #8b6c42;
+    --mid: #2a2a2a;
+    --muted: #888;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 30% 50%, #1e1610 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-left {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 7vw, 92px);
+    font-weight: 700;
+    line-height: 0.95;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+
+  .hero-bio {
+    font-size: 15px;
+    color: #aaa;
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--black);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #d9b97e; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-right {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 60px 60px 40px;
+  }
+
+  .hero-image-wrapper {
+    position: relative;
+    width: 340px;
+  }
+
+  .hero-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    right: 16px;
+    bottom: 16px;
+    border: 1px solid var(--accent2);
+    z-index: 0;
+  }
+
+  .hero-image-wrapper img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(20%) contrast(1.05);
+    display: block;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  /* ─── SECTION SHARED ─── */
+  section {
+    padding: 100px 80px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 60px;
+    color: var(--white);
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ─── SKILLS ─── */
+  .skills-section {
+    background: var(--mid);
+    padding: 80px;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    max-width: 900px;
+  }
+
+  .skill-pill {
+    background: rgba(201,169,110,0.08);
+    border: 1px solid rgba(201,169,110,0.25);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 12px 20px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .skill-pill:hover { background: rgba(201,169,110,0.15); }
+
+  /* ─── EXPERIENCE ─── */
+  .experience-section { background: var(--black); }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent2), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s forwards;
+  }
+  .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+  .timeline-item:nth-child(2) { animation-delay: 0.25s; }
+  .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -5px;
+    top: 8px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--black);
+  }
+
+  .timeline-period {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .timeline-company {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+  }
+  .timeline-bullets li {
+    font-size: 14px;
+    color: #aaa;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent2);
+  }
+
+  /* ─── EDUCATION ─── */
+  .education-section { background: var(--mid); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    max-width: 900px;
+  }
+
+  .edu-card {
+    background: var(--mid);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+  .edu-card:hover { background: #333; }
+
+  .edu-period {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 12px;
+  }
+
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .edu-inst {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section {
+    background: var(--black);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .contact-icon {
+    font-size: 16px;
+    width: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 14px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .contact-value:hover { color: var(--accent); }
+
+  .lang-tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .lang-tag {
+    font-size: 12px;
+    padding: 6px 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #ccc;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-tagline {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--white);
+  }
+  .contact-tagline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--mid);
+    padding: 28px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer p { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+  footer a { color: var(--accent2); text-decoration: none; font-size: 12px; }
+  footer a:hover { color: var(--accent); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 80px 32px 60px; }
+    section, .skills-section, .education-section, .contact-section { padding: 60px 32px; }
+    .contact-section { grid-template-columns: 1fr; gap: 48px; }
+    footer { flex-direction: column; gap: 8px; padding: 24px 32px; }
+    .hero-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" style="padding: 0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfolio — Graphic Designer</p>
+    <h1 class="hero-name">Vaishnavi<br/><em>Dhamale</em></h1>
+    <p class="hero-title">Creative Visual Storyteller</p>
+    <p class="hero-bio">
+      Creative Graphic Designer with 3.5+ years of expertise developing unique custom artwork. Skilled at managing brand development projects from inception to completion — crafting memorable brand messages, strategies, and high-quality visual productions.
+    </p>
+    <div class="hero-cta">
+      <a href="mailto:vaishnavidhamale007@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://www.behance.net/vaishnadhamale" target="_blank" class="btn-ghost">View Portfolio ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-image-wrapper">
+      <img src="/mnt/user-data/uploads/IMG_7678.png" alt="Vaishnavi Dhamale" />
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section">
+  <p class="section-label">What I work with</p>
+  <h2 class="section-title">Skills &amp; <em>Tools</em></h2>
+  <div class="skills-grid">
+    <div class="skill-pill">Illustrator</div>
+    <div class="skill-pill">Photoshop</div>
+    <div class="skill-pill">Figma</div>
+    <div class="skill-pill">Blender</div>
+    <div class="skill-pill">Premiere Pro</div>
+    <div class="skill-pill">Branding Identity</div>
+    <div class="skill-pill">Illustration</div>
+    <div class="skill-pill">Web Design</div>
+    <div class="skill-pill">Multitasking</div>
+    <div class="skill-pill">Leadership</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section">
+  <p class="section-label">Work History</p>
+  <h2 class="section-title">Experience &amp; <em>Projects</em></h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Feb 2024 — Aug 2024</p>
+      <h3 class="timeline-role">Graphic Designer</h3>
+      <p class="timeline-company">Granimals · Chandigarh</p>
+      <ul class="timeline-bullets">
+        <li>Created social media graphics, web design assets, and pitch decks establishing consistent brand identity.</li>
+        <li>Crafted email designs and handled diverse branding tasks, ensuring cohesive visual communication across all platforms.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Dec 2022 — Apr 2023</p>
+      <h3 class="timeline-role">Graphic Designer</h3>
+      <p class="timeline-company">Heimdall Capital UG · Leverkusen, Germany (Freelance)</p>
+      <ul class="timeline-bullets">
+        <li>Created informative and engaging posts for client's Twitter and Instagram pages.</li>
+        <li>Managed social media campaigns to increase brand engagement and audience growth.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <p class="timeline-period">Jun 2022 — Jul 2022</p>
+      <h3 class="timeline-role">Creative Head</h3>
+      <p class="timeline-company">Stringsrecord Studio · Pune (Internship)</p>
+      <ul class="timeline-bullets">
+        <li>Developed creative designs for print materials, logos, flyers, and branding collateral.</li>
+        <li>Created posters, illustrations, and typography for social media and various companies.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education-section">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education &amp; <em>Training</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <p class="edu-period">2019 – 2023</p>
+      <h3 class="edu-degree">Bachelor of Design</h3>
+      <p class="edu-inst">D Y Patil International University, Pune</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">2017 – 2019</p>
+      <h3 class="edu-degree">Higher Education</h3>
+      <p class="edu-inst">St. Miras College For Girls, Pune</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-period">2016 – 2017</p>
+      <h3 class="edu-degree">Secondary Education</h3>
+      <p class="edu-inst">Angel High School, Pune</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div>
+    <p class="section-label">Let's connect</p>
+    <h2 class="contact-tagline">Open to <em>creative</em><br/>opportunities</h2>
+  </div>
+  <div>
+    <div class="contact-details">
+
+      <div class="contact-row">
+        <span class="contact-icon">✉</span>
+        <div>
+          <p class="contact-label">Email</p>
+          <a href="mailto:vaishnavidhamale007@gmail.com" class="contact-value">vaishnavidhamale007@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-icon">☎</span>
+        <div>
+          <p class="contact-label">Phone</p>
+          <a href="tel:+919665032960" class="contact-value">+91-9665032960</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-icon">◈</span>
+        <div>
+          <p class="contact-label">Portfolio</p>
+          <a href="https://www.behance.net/vaishnadhamale" target="_blank" class="contact-value">behance.net/vaishnadhamale ↗</a>
+        </div>
+      </div>
+
+      <div class="contact-row">
+        <span class="contact-icon">◉</span>
+        <div>
+          <p class="contact-label">Instagram</p>
+          <a href="https://instagram.com/justt.vaish1877" target="_blank" class="contact-value">@justt.vaish1877 ↗</a>
+        </div>
+      </div>
+
+      <div class="contact-row" style="border: none;">
+        <span class="contact-icon">◐</span>
+        <div>
+          <p class="contact-label">Languages</p>
+          <div class="lang-tags">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">Hindi</span>
+            <span class="lang-tag">Marathi</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2024 Vaishnavi Dhamale — Graphic Designer, Pune</p>
+  <a href="https://www.behance.net/vaishnadhamale" target="_blank">View Full Portfolio ↗</a>
+</footer>
+
+</body>
+</html>
